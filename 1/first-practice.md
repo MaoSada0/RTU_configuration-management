@@ -31,14 +31,14 @@ cat /etc/protocols | tail -n 5 | sort -nrk2 | awk '{print $2, $1}'
 string=$1
 size=${#string}
 echo -n "+"
-for ((i=-2;i<size;i++))
+for ((i=0;i<size+2;i++))
 do
 echo -n "-"
 done
 echo "+"
 echo "| $string |"
 echo -n "+"
-for ((i=-2;i<size;i++))
+for ((i=0;i<size+2;i++))
 do
 echo -n "-"
 done
