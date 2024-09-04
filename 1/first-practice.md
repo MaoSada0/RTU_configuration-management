@@ -47,3 +47,14 @@ echo "+"
 - -n в echo убирает "\n" 
 
 ![task_3](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task3.png)
+
+
+## Задание 4
+```bash
+grep -o '\b[a-zA-Z_][a-zA-Z0-9_]*\b' Main.java | sort | uniq
+```
+- grep - поиск шаблона в файле
+- -o - выводит только то что соответствует шаблону
+- \b[a-zA-Z_][a-zA-Z0-9_]*\b - шаблон (\b - граница, * -ноль или больше символов)
+
+![task_4](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task_4.png)
