@@ -90,3 +90,15 @@ done
 ```
 
 ![task_6](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task_6.png)
+
+
+## Задание 7
+```bash
+find "./" -type f -exec md5sum {} + | sort | uniq -w32 -dD | awk '{print $2}'  
+```
+- -type f - только файлы
+- exec md5sum - для каждого применить md5sum
+- -w32 - первые 32 символа
+- -d - выбрать только то что дубликат
+- -D - выбрать эти стркои
+![task_7](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task_7.png)
