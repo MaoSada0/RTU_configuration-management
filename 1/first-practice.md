@@ -114,3 +114,14 @@ find . -name "*.txt" -print0 | tar -czvf ans.tar --null -T -
 - -f ans.tar - название
 - --null - данные разделены нулевым байтом 
 ![task_8](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task_8.png)
+
+## Задание 9
+```bash
+#!/bin/bash
+
+sed 's/    /\t/g' "$1" > "$2"
+```
+- sed - текстовые преобразования
+- 's/ /\t/g' - s - значит замена; / 4 пробела / на \t (табуляция) / g - заменить все
+- "$1" > "$2" - из первого файла во второй 
+![task_9](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task_9.png)
