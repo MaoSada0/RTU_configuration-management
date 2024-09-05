@@ -102,3 +102,15 @@ find "./" -type f -exec md5sum {} + | sort | uniq -w32 -dD | awk '{print $2}'
 - -d - выбрать только то что дубликат
 - -D - выбрать эти стркои
 ![task_7](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task_7.png)
+
+## Задание 8
+```bash
+find . -name "*.txt" -print0 | tar -czvf ans.tar --null -T -
+```
+- -print0 - разделяет файлы нулевым байтом
+- -c —создать новый архив
+- -z — сжать с помощью gzip
+- -v — выводить имена файлов которые добавляются в архив
+- -f ans.tar - название
+- --null - данные разделены нулевым байтом 
+![task_8](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task_8.png)
