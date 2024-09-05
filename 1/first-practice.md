@@ -70,3 +70,23 @@ sudo cp "$1" /usr/local/bin/
 ```
 
 ![task_5](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task_5.png)
+
+## Задание 6
+```bash
+#!/bin/bash
+
+for file in "$@"; do
+  if [[ "$file" =~ \.(c|js|py|java)$ ]]; then
+    first_line=$(head -n 1 "$file")
+    if [[ "$first_line" =~ ^# && "$file" =~ \.(py)$ ]]; then
+      echo "$file has comment in the first line."
+    elif [[ "$first_line" =~ ^// && "$file" =~ \.(c|java|js)$ ]]; then
+      echo "$file has comment in first line"
+    else
+      echo "$file doesnt have comment in first line"
+    fi
+  fi
+done
+```
+
+![task_6](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task_6.png)
