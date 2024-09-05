@@ -58,3 +58,15 @@ grep -o '\b[a-zA-Z_][a-zA-Z0-9_]*\b' Main.java | sort | uniq
 - \b[a-zA-Z_][a-zA-Z0-9_]*\b - шаблон (\b - граница, * -ноль или больше символов)
 
 ![task_4](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task_4.png)
+
+
+
+## Задание 5
+```bash
+#!/bin/bash
+
+chmod +x "$1"
+sudo cp "$1" /usr/local/bin/
+```
+
+![task_5](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task_5.png)
