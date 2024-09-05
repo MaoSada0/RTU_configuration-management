@@ -125,3 +125,10 @@ sed 's/    /\t/g' "$1" > "$2"
 - 's/ /\t/g' - s - значит замена; / 4 пробела / на \t (табуляция) / g - заменить все
 - "$1" > "$2" - из первого файла во второй 
 ![task_9](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task_9.png)
+
+## Задание 10
+```bash
+find ./ -type f -empty -name "*.txt"
+```
+
+![task_10](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/1/task_10.png)
