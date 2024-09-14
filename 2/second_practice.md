@@ -20,11 +20,6 @@ pip show matplotlib
 ```
 ![task_1](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/2/task_1.png)
 
---
-
-
-
-
 ## Задание 2
 Установка:
 - С помощью менеджера пакетов:
@@ -159,4 +154,24 @@ dot -Tpng express_deps.dot -o express_deps.png
 - -o - имя выходного файла
 
 ![express_deps](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/2/express_deps.png)
+
+
+## Задание 4
+Код MiniZinc
+```MiniZinc
+include "globals.mzn";
+var 0..9: a;
+var 0..9: b;
+var 0..9: c;
+var 0..9: d;
+var 0..9: e;
+var 0..9: f;
+
+constraint a + b + c == d + e + f;
+constraint all_different([a, b, c, d, e, f]);
+
+solve minimize a + b + c;
+```
+![изображение](https://github.com/user-attachments/assets/f7451081-09dd-483f-9f6d-49252e8c7766)
+
 
