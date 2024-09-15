@@ -209,6 +209,57 @@ solve satisfy;
 
 ![изображение](https://github.com/user-attachments/assets/b6501c1c-bc73-4509-a04e-a81f831ac655)
 
+## Задание 6
+Код MiniZinc
+```MiniZinc
+set of int: Root = {100};
+set of int: Foo = {100, 110}; 
+set of int: Target = {100, 200}; 
+set of int: Left = {100};  
+set of int: Right = {100};  
+set of int: Shared = {100, 200};  
+
+var Root: root;
+var Foo: foo;
+var Target: target;
+var Left: left;
+var Right: right;
+var Shared: shared;
+
+
+constraint
+    if root = 100 then
+        (foo >= 100 /\ foo < 200) /\ (target >= 200 /\ target < 300) endif;
+
+constraint
+    if (foo = 110) then
+        (left >= 100 /\ left < 200) /\ (right >= 100 /\ right < 200) endif;
+        
+constraint    
+    if (foo = 100) then true endif;
+    
+constraint
+    if (left = 100) then
+        shared >= 100 endif;    
+        
+constraint
+    if (right = 100) then
+        shared < 200 endif;    
+        
+constraint    
+    if (shared = 200) then true endif;
+
+constraint
+    if (shared = 100) then
+       (target >= 100 /\ target < 200) endif;   
+     
+constraint    
+    if (target = 100 \/ target = 200) then true endif;
+    
+solve satisfy;
+```
+
+``` Решений нет ```
 
 
 
