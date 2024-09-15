@@ -174,4 +174,41 @@ solve minimize a + b + c;
 ```
 ![изображение](https://github.com/user-attachments/assets/f7451081-09dd-483f-9f6d-49252e8c7766)
 
+## Задание 5
+Код MiniZinc
+```MiniZinc
+set of int: Root = {1};
+set of int: Menu_Versions = {150, 140, 130, 120, 110, 100}; 
+set of int: Dropdown_Versions = {230, 220, 210, 200, 180}; 
+set of int: Icons_Versions = {200, 100};  
+
+var Menu_Versions: menu_version;
+var Root: root;
+var Dropdown_Versions: dropdown_version;
+var Icons_Versions: icons_version;
+
+constraint
+    if root = 1 then
+        (menu_version = 100 \/ menu_version = 150 \/ icons_version = 100) endif;
+
+constraint
+    if (menu_version = 150 \/ menu_version = 140 \/ menu_version = 130 \/ 
+     menu_version = 120 \/ menu_version = 110) then
+        (dropdown_version = 230 \/ dropdown_version = 200) endif;
+
+constraint
+    if menu_version = 100 then dropdown_version = 180 endif;
+
+constraint
+    if (dropdown_version = 230 \/ dropdown_version = 220 \/ 
+     dropdown_version = 210 \/ dropdown_version = 200) then
+        icons_version = 200 endif;
+    
+solve satisfy;
+```
+
+![изображение](https://github.com/user-attachments/assets/b6501c1c-bc73-4509-a04e-a81f831ac655)
+
+
+
 
