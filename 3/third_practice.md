@@ -80,3 +80,21 @@ let students =
 in  { groups = groups, students = students, subject = "Конфигурационное управление" }
 
 ```
+
+## Задание 3
+
+```BNF
+<digit> = 0 | 1
+<string> = <digit> | <digit> <string>
+```
+
+## Задание 4
+
+```BNF
+<openFirst> = (
+<openSecond> = {
+<closeFirst> = )
+<closeSecond> = }
+<string> =  <openFirst> <closeFirst> | <openSecond> <closeSecond> | <openFirst> <string> <closeFirst> | <openSecond> <string> <closeSecond>
+
+```
