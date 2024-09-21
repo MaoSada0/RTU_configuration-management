@@ -98,3 +98,16 @@ in  { groups = groups, students = students, subject = "Конфигурацио�
 <string> =  <openFirst> <closeFirst> | <openSecond> <closeSecond> | <openFirst> <string> <closeFirst> | <openSecond> <string> <closeSecond>
 
 ```
+
+## Задание 5
+'#' - разделитель
+
+```BNF
+<expression> = <term> # <open> <term> <operation> <term> <close> # <negative> <open> <term> <operation> <term> <close> # <open> <expression> <operation> <expression> <close> # <negative> <open> <expression> <close>
+<term> = <variable> # <negative> <variable> # <open> <variable> <operation> <variable> <close> # <negative> <open> <variable> <operation> <variable> <close>
+<variable> = x # y # z # w
+<operation> = & # |
+<negative> = ~
+<open> = (
+<close> = )
+```
