@@ -212,19 +212,12 @@ solve satisfy;
 ## Задание 6
 Код MiniZinc
 ```MiniZinc
-set of int: Root = {100};
-set of int: Foo = {100, 110}; 
-set of int: Target = {100, 200}; 
-set of int: Left = {100};  
-set of int: Right = {100};  
-set of int: Shared = {100, 200};  
-
-var Root: root;
-var Foo: foo;
-var Target: target;
-var Left: left;
-var Right: right;
-var Shared: shared;
+int: root = 100;
+var 100..300: foo;
+var 100..300: target;
+var 100..300: right;
+var 100..300: left;
+var 100..300: shared;
 
 
 constraint
@@ -259,7 +252,8 @@ constraint
 solve satisfy;
 ```
 
-``` Решений нет ```
+![{37907F86-48D9-4AE7-8771-A79D06CBD92F}](https://github.com/user-attachments/assets/c84ddcb5-c789-4f53-baa9-fad7d803f8ed)
+
 
 
 
