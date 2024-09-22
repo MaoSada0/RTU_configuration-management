@@ -66,14 +66,20 @@ digraph MatplotlibDeps {
     "pyparsing" [label="pyparsing"];
     "python-dateutil" [label="python-dateutil"];
 }
+
 ```
+- Формирование dot-файла пакета matplotlib
+```
+pipdeptree -p matplotlib --graph-output dot > matplotlib_deps.dot
+```
+
 - Получение изображения зависимостей
 ```bash
 dot -Tpng matplotlib_deps.dot -o matplotlib_deps.png
 ```
 - -Tpng - расширение выходного файла
 - -o - имя выходного файла
-![matplotlib_deps](https://github.com/user-attachments/assets/197ae33e-2f8b-4b18-bbbb-2ac3177c9f69)
+![matplotlib_depsAnother](https://github.com/user-attachments/assets/fa933da7-9ced-4535-9c56-f1ad16f330b2)
 
 ### Express
 - graphviz-код express
@@ -146,6 +152,12 @@ digraph ExpressDeps {
     "vary" [label="vary"];
 }
 ```
+
+- Формирование dot-файла пакета express
+```
+npm ls -a --json | jq '{name: .name, dependencies: {express: .dependencies.express}}' | npm2dot > express_deps.dot
+```
+
 - Получение изображения зависимостей
 ```bash
 dot -Tpng express_deps.dot -o express_deps.png
@@ -153,7 +165,8 @@ dot -Tpng express_deps.dot -o express_deps.png
 - -Tpng - расширение выходного файла
 - -o - имя выходного файла
 
-![express_deps](https://github.com/MaoSada0/configuration-management-RTU/blob/main/screenshot/2/express_deps.png)
+![expressDep](https://github.com/user-attachments/assets/3cb53288-9a87-4b58-a69e-7d4ef9e5e581)
+
 
 
 ## Задание 4
