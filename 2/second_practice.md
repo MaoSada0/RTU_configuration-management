@@ -268,5 +268,118 @@ solve satisfy;
 ![{37907F86-48D9-4AE7-8771-A79D06CBD92F}](https://github.com/user-attachments/assets/c84ddcb5-c789-4f53-baa9-fad7d803f8ed)
 
 
+## Задание 7
+
+- Код решения на python
+```python
+import re
+from collections import defaultdict
+
+
+def parse_dependencies(file_path):
+    dependencies = defaultdict(dict)
+
+    with open(file_path, 'r') as file:
+        for line in file:
+            if ' - ' not in line:
+                continue
+
+            package_info, deps = line.split(" - ")
+            package, version = package_info.split()
+
+            dep_dict = {}
+            if deps.strip():
+                for dep in deps.split():
+                    match = re.match(r'([a-zA-Z0-9_]+)\s*([^\s]*)', dep)
+                    if match:
+                        dep_name = match.group(1)
+                        dep_version = match.group(2)
+                        dep_dict[dep_name.strip()] = dep_version.strip()
+
+            dependencies[package] = {
+                "version": version,
+                "dependencies": dep_dict
+            }
+
+    return dependencies
+
+
+def find_solution(dependencies):
+    resolved_versions = {}
+    solution = {}
+
+    def can_resolve(package, current_versions):
+        if package in solution:
+            return True
+        package_info = dependencies.get(package)
+        if not package_info:
+            return False
+
+        package_version = package_info["version"]
+        package_deps = package_info["dependencies"]
+
+        for dep_name, dep_version_constraint in package_deps.items():
+            if dep_name in current_versions:
+                if not version_satisfies_constraint(current_versions[dep_name], dep_version_constraint):
+                    return False
+            else:
+                current_versions[dep_name] = dep_version_constraint
+
+                if not can_resolve(dep_name, current_versions):
+                    return False
+
+        solution[package] = package_version
+        return True
+
+    for package in dependencies:
+        if not can_resolve(package, resolved_versions):
+            print(f"Не удалось разрешить зависимости для пакета {package}")
+            return None
+
+    return solution
+
+
+def version_satisfies_constraint(version, constraint):
+    constraint_version = constraint.lstrip('^>=')
+    if constraint.startswith('>='):
+        return version >= constraint_version
+    elif constraint.startswith('^'):
+        return version >= constraint_version
+    elif constraint.startswith('<'):
+        return version < constraint_version
+    else:
+        return version == constraint_version
+
+
+file_path = 'dependencies.txt'
+dependencies = parse_dependencies(file_path)
+solution = find_solution(dependencies)
+
+if solution:
+    print("Найдено решение:")
+    for package, version in solution.items():
+        print(f"{package}: {version}")
+else:
+    print("Решение не найдено")
+```
+- txt файл имеет следующий вид
+```txt
+<package> <version> - <dependency_1> <version_constraint> <dependency_2> <version_constraint> ...
+...
+```
+- Пример txt файла
+```txt
+root 1.0.0 - foo ^1.0.0 target ^2.0.0
+foo 1.1.0 - left ^1.0.0 right ^1.0.0
+foo 1.0.0 -
+left 1.0.0 - >=1.0.0
+right 1.0.0 - <2.0.0
+shared 2.0.0 -
+shared 1.0.0 - ^1.0.0
+target 2.0.0 - 
+target 1.0.0 -
+```
+- Пример вывода
+  ![{B1479103-0CDA-4B2E-B5AA-70D1F4743CE0}](https://github.com/user-attachments/assets/e0c62d46-7fb5-4a8a-809d-c61076ff456c)
 
 
