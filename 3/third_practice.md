@@ -37,48 +37,27 @@ let Group = Text
 let Student = { age : Natural, group : Group, name : Text }
 
 let createGroup : Natural -> Group =
-      λ(n : Natural) → "ИКБО-" ++ (Natural/show n) ++ "-20"
+      λ(n : Natural) → "БИВТ-" ++ (Natural/show n) ++ "-21"
 
 let groups =
-  [ createGroup 1
-  , createGroup 2
-  , createGroup 3
-  , createGroup 4
-  , createGroup 5
-  , createGroup 6
-  , createGroup 7
-  , createGroup 8
-  , createGroup 9
-  , createGroup 10
-  , createGroup 11
-  , createGroup 12
-  , createGroup 13
-  , createGroup 14
-  , createGroup 15
-  , createGroup 16
-  , createGroup 17
-  , createGroup 18
-  , createGroup 19
-  , createGroup 20
-  , createGroup 21
-  , createGroup 22
-  , createGroup 23
-  , createGroup 24
-  ]
+      List/map
+        Natural
+        Group
+        createGroup
+        (List/replicate 10 (λ(i : Natural) → i + 1))
 
 let createStudent : Natural -> Group -> Text -> Student =
       λ(age : Natural) → λ(group : Group) → λ(name : Text) →
         { age = age, group = group, name = name }
 
 let students =
-  [ createStudent 19 (createGroup 4) "Иванов И.И."
-  , createStudent 18 (createGroup 5) "Петров П.П."
-  , createStudent 18 (createGroup 5) "Сидоров С.С."
-  , createStudent 19 (createGroup 10) "Какряцкий А.М."
+  [ createStudent 20 (createGroup 2) "Александров А.А."
+  , createStudent 21 (createGroup 3) "Борисов Б.Б."
+  , createStudent 22 (createGroup 1) "Васильев В.В."
+  , createStudent 20 (createGroup 4) "Григорьев Г.Г."
   ]
 
-in  { groups = groups, students = students, subject = "Конфигурационное управление" }
-
+in  { groups = groups, students = students, subject = "Программирование" }
 ```
 
 ## Задание 3
