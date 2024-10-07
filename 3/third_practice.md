@@ -54,7 +54,7 @@ let students =
   [ createStudent 20 (createGroup 2) "Александров А.А."
   , createStudent 21 (createGroup 3) "Борисов Б.Б."
   , createStudent 22 (createGroup 1) "Васильев В.В."
-  , createStudent 20 (createGroup 4) "Григорьев Г.Г."
+  , createStudent 20 (createGroup 4) "Какряцкий А.М."
   ]
 
 in  { groups = groups, students = students, subject = "Программирование" }
