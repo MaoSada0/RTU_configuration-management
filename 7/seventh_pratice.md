@@ -88,3 +88,5 @@ def factorial(n):
         n -= 1
     return r
 ```
+
+## Задание 3
