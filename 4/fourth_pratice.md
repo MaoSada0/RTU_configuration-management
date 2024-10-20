@@ -110,3 +110,29 @@ if __name__ == '__main__':
 ```
 ![{A856A5C8-6332-4B81-9052-D170BA8DECFF}](https://github.com/user-attachments/assets/9fef55bc-da21-4aae-a4e3-3b9ca885fbfd)
 ![{34B7691F-EE82-4F02-8AE4-703F9D636C31}](https://github.com/user-attachments/assets/08b1ec10-96a6-4f70-92bb-96b9e0246fc7)
+
+## Задание 4
+```Make
+CC = cl
+CFLAGS = /W3
+
+TARGET = prog.exe
+SOURCES = prog.c data.c
+
+all: $(TARGET) files.lst distr.zip
+
+$(TARGET): $(SOURCES)
+	$(CC) $(CFLAGS) $(SOURCES) /Fe$(TARGET)
+
+files.lst:
+	dir /B /A:-D > files.lst
+
+distr.zip: $(TARGET) files.lst
+	powershell -Command "Compress-Archive -Path *.* -DestinationPath distr.zip"
+
+clean:
+	del /Q $(TARGET) files.lst distr.zip
+```
+
+![{BC9AB93B-8BC4-4687-A344-1C70CD727889}](https://github.com/user-attachments/assets/f5b882d6-ae42-4ec4-a722-9fad5424e517)
+
