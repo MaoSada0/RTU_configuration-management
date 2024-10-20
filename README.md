@@ -11,3 +11,4 @@
 - Practice №2 - [Package managers](https://github.com/MaoSada0/configuration-management-RTU/blob/main/2/second_practice.md)
 - Practice №3 - [Configuration languages](https://github.com/MaoSada0/configuration-management-RTU/blob/main/3/third_practice.md)
 - Practice №4 - [Assembly automation systems](https://github.com/MaoSada0/RTU_configuration-management/blob/main/4/fourth_pratice.md)
+- Practice №7 - [Virtualization issues](https://github.com/MaoSada0/RTU_configuration-management/blob/main/7/seventh_pratice.md)
