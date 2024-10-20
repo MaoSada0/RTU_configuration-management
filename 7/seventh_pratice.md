@@ -163,3 +163,185 @@ public class ru.qq.Factorial {
        5: return
 }
 ```
+
+
+> Код C# 1
+```C#
+using System;
+
+namespace Ru.Qq
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int result = Foo(10);
+            Console.WriteLine(result);
+        }
+
+        private static int Foo(int x)
+        {
+            int result = (x * 10) + 42;
+            return result;
+        }
+    }
+}
+
+```
+> Байткод C# 1
+```bytecode
+.assembly extern mscorlib {}
+.assembly Ru.Qq {}
+.module Ru.Qq.exe
+
+namespace Ru.Qq
+{
+    .class private auto ansi beforefieldinit Program
+        extends [mscorlib]System.Object
+    {
+        .method private hidebysig static void Main(string[] args) cil managed
+        {
+            .entrypoint
+            .maxstack 2
+            .locals init (
+                [0] int32 result
+            )
+
+            ldc.i4.s 10
+            call int32 Ru.Qq.Program::Foo(int32)
+            stloc.0
+
+            ldloc.0
+            call void [mscorlib]System.Console::WriteLine(int32)
+
+            ret
+        }
+
+        .method private hidebysig static int32 Foo(int32 x) cil managed
+        {
+            .maxstack 2
+            .locals init (
+                [0] int32 result
+            )
+
+            ldarg.0
+            ldc.i4.s 10
+            mul
+            ldc.i4.s 42
+            add
+            stloc.0
+
+            ldloc.0
+            ret
+        }
+
+        .method public hidebysig specialname rtspecialname instance void .ctor() cil managed
+        {
+            .maxstack 8
+            ldarg.0
+            call instance void [mscorlib]System.Object::.ctor()
+            ret
+        }
+    }
+}
+
+```
+
+> Код C# 2
+```C#
+using System;
+
+namespace Ru.Qq
+{
+    class Factorial
+    {
+        static void Main(string[] args)
+        {
+            int result = FactorialMethod(2);
+            Console.WriteLine(result);
+        }
+
+        private static int FactorialMethod(int n)
+        {
+            int r = 1;
+            while (n > 1)
+            {
+                r *= n;
+                n -= 1;
+            }
+            return r;
+        }
+    }
+}
+
+```
+> Байткод C# 2
+```bytecode
+.assembly extern mscorlib {}
+.assembly Ru.Qq {}
+.module Ru.Qq.exe
+
+namespace Ru.Qq
+{
+    .class private auto ansi beforefieldinit Factorial
+        extends [mscorlib]System.Object
+    {
+        .method private hidebysig static void Main(string[] args) cil managed
+        {
+            .entrypoint
+            .maxstack 2
+            .locals init (
+                [0] int32 result
+            )
+
+            ldc.i4.2
+            call int32 Ru.Qq.Factorial::FactorialMethod(int32)
+            stloc.0
+
+            ldloc.0
+            call void [mscorlib]System.Console::WriteLine(int32)
+
+            ret
+        }
+
+        .method private hidebysig static int32 FactorialMethod(int32 n) cil managed
+        {
+            .maxstack 2
+            .locals init (
+                [0] int32 r
+            )
+
+            ldc.i4.1
+            stloc.0
+
+            br.s IL_0007
+            IL_0002: ldloc.0
+            ldarg.0
+            mul
+            stloc.0
+
+            ldarg.0
+            ldc.i4.1
+            sub
+            starg.s n
+
+            IL_0007: ldarg.0
+            ldc.i4.1
+            ble.s IL_0010
+
+            br.s IL_0002
+            IL_0010: ldloc.0
+            ret
+        }
+
+        .method public hidebysig specialname rtspecialname instance void .ctor() cil managed
+        {
+            .maxstack 8
+            ldarg.0
+            call instance void [mscorlib]System.Object::.ctor()
+            ret
+        }
+    }
+}
+
+```
