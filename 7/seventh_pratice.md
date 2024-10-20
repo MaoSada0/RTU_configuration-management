@@ -90,3 +90,76 @@ def factorial(n):
 ```
 
 ## Задание 3
+
+### Java
+
+> Код Java 1
+```java
+package ru.qq;
+
+public class Main {
+    public static void main(String[] args) {
+        foo(10);
+    }
+
+    private static int foo(int x){
+        int result = (x * 10) + 42;
+        return result;
+    }
+}
+```
+> Байткод Java 1
+```bytecode
+public class ru.qq.Main {
+  public ru.qq.Main();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: bipush        10
+       2: invokestatic  #7                  // Method foo:(I)I
+       5: pop
+       6: return
+}
+```
+
+> Код Java 2
+```java
+package ru.qq;
+
+public class Factorial {
+    public static void main(String[] args) {
+        factorial(2);
+    }
+
+    private static int factorial(int n){
+        int r = 1;
+        while (n > 1) {
+            r *= n;
+            n -= 1;
+        }
+        return r;
+    }
+}
+
+```
+> Байткод Java 2
+```bytecode
+public class ru.qq.Factorial {
+  public ru.qq.Factorial();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: iconst_2
+       1: invokestatic  #7                  // Method factorial:(I)I
+       4: pop
+       5: return
+}
+```
